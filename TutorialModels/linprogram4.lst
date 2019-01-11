@@ -1,0 +1,774 @@
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  set j /1*10/, i/1*10/;parameter b(i), c(j); parameter a(i,j);
+   2   
+   3  variable z; positive variable x(j), y(i);
+   4  equations objfunc, constr(i);
+   5  objfunc..z =E= sum(j,c(j)*x(j));
+   6  constr(i)..sum(j, a(i,j)*x(j))+y(i)=E= b(i);
+   7   
+   8  model linprogram /all/;
+   9  file out / "out.txt"/; put out; put "Results"//;
+  10  set k /1*3/; loop(k, b(i)=uniform(10,80);
+  11  c(j)=uniform(-5,-1); a(i,j)=uniform(1,2);
+  12  a(i,j)=uniform(1,2);
+  13   
+  14  solve linprogram using lp min z; display c,a,b, z.l, x.l;
+  15   
+  16  put k.TL:3, z.L:8:2;loop(j,put x.L(j):8:2); put /;);
+
+
+COMPILATION TIME     =        0.000 SECONDS      3 MB  25.1.2 r67455 WEX-WEI
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE linprogram Using LP From line 14
+
+
+---- objfunc  =E=  
+
+objfunc..  z + 1.007529492*x(1) + 2.685066488*x(2) + 1.035467844*x(3) + 1.950998132*x(4) + 4.477230068*x(5) + 2.441124964*x(6) + 4.361928544*x(7) + 3.999677868*x(8) + 2.324285564*x(9) + 3.258574476*x(10) =E= 0 ; (LHS = 0)
+     
+
+---- constr  =E=  
+
+constr(1)..  1.101689197*x(1) + 1.38388961*x(2) + 1.324093927*x(3) + 1.192134382*x(4) + 1.112368436*x(5) + 1.596558144*x(6) + 1.511448928*x(7) + 1.045066059*x(8) + 1.783102004*x(9) + 1.945749415*x(10) + y(1) =E= 22.02229924 ;
+     
+      (LHS = 0, INFES = 22.02229924 ****)
+     
+constr(2)..  1.596462556*x(1) + 1.607341301*x(2) + 1.362509471*x(3) + 1.594067961*x(4) + 1.679854079*x(5) + 1.506588022*x(6) + 1.159253884*x(7) + 1.656892105*x(8) + 1.523879602*x(9) + 1.124396483*x(10) + y(2) =E= 69.02866956 ;
+     
+      (LHS = 0, INFES = 69.02866956 ****)
+     
+constr(3)..  1.986720724*x(1) + 1.228123065*x(2) + 1.675654903*x(3) + 1.776777457*x(4) + 1.932451789*x(5) + 1.201241563*x(6) + 1.297136057*x(7) + 1.197227518*x(8) + 1.246345717*x(9) + 1.646476473*x(10) + y(3) =E= 48.52627492 ;
+     
+      (LHS = 0, INFES = 48.52627492 ****)
+     
+REMAINING 7 ENTRIES SKIPPED
+
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE linprogram Using LP From line 14
+
+
+---- z  
+
+z
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       objfunc
+
+
+---- x  
+
+x(1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1.0075  objfunc
+        1.1017  constr(1)
+        1.5965  constr(2)
+        1.9867  constr(3)
+        1.735   constr(4)
+        1.8458  constr(5)
+        1.4884  constr(6)
+        1.0246  constr(7)
+        1.5943  constr(8)
+        1.9328  constr(9)
+        1.5803  constr(10)
+
+x(2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        2.6851  objfunc
+        1.3839  constr(1)
+        1.6073  constr(2)
+        1.2281  constr(3)
+        1.0854  constr(4)
+        1.6127  constr(5)
+        1.7956  constr(6)
+        1.1778  constr(7)
+        1.2592  constr(8)
+        1.3488  constr(9)
+        1.1664  constr(10)
+
+x(3)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1.0355  objfunc
+        1.3241  constr(1)
+        1.3625  constr(2)
+        1.6757  constr(3)
+        1.1503  constr(4)
+        1.976   constr(5)
+        1.492   constr(6)
+        1.0613  constr(7)
+        1.6406  constr(8)
+        1.0083  constr(9)
+        1.6434  constr(10)
+
+REMAINING 7 ENTRIES SKIPPED
+
+---- y  
+
+y(1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       constr(1)
+
+y(2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       constr(2)
+
+y(3)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       constr(3)
+
+REMAINING 7 ENTRIES SKIPPED
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE linprogram Using LP From line 14
+
+
+LOOPS                                    k   1
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           2     SINGLE EQUATIONS           11
+BLOCKS OF VARIABLES           3     SINGLE VARIABLES           21
+NON ZERO ELEMENTS           121
+
+
+GENERATION TIME      =        0.063 SECONDS      4 MB  25.1.2 r67455 WEX-WEI
+
+
+EXECUTION TIME       =        0.063 SECONDS      4 MB  25.1.2 r67455 WEX-WEI
+               L O O P S                  k 1
+
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE linprogram Using LP From line 14
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   linprogram          OBJECTIVE  z
+     TYPE    LP                  DIRECTION  MINIMIZE
+     SOLVER  CPLEX               FROM LINE  14
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      1 Optimal                   
+**** OBJECTIVE VALUE              -41.8635
+
+ RESOURCE USAGE, LIMIT          0.016      1000.000
+ ITERATION COUNT, LIMIT         1    2000000000
+
+IBM ILOG CPLEX   25.1.2 r67455 Released Aug  1, 2018 WEI x86 64bit/MS Windows 
+Cplex 12.8.0.0
+
+Space for names approximately 0.00 Mb
+Use option 'names no' to turn use of names off
+LP status(1): optimal
+Cplex Time: 0.00sec (det. 0.03 ticks)
+Optimal solution found.
+Objective :         -41.863451
+
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU objfunc             .              .              .             1.0000      
+
+---- EQU constr  
+
+          LOWER          LEVEL          UPPER         MARGINAL
+
+1         22.0223        22.0223        22.0223         EPS         
+2         69.0287        69.0287        69.0287         EPS         
+3         48.5263        48.5263        48.5263         EPS         
+4         31.0797        31.0797        31.0797         EPS         
+5         30.4548        30.4548        30.4548         EPS         
+6         25.6837        25.6837        25.6837         EPS         
+7         34.4881        34.4881        34.4881         EPS         
+8         69.9389        69.9389        69.9389         EPS         
+9         14.6980        14.6980        14.6980        -2.8482      
+10        45.0147        45.0147        45.0147         EPS         
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR z                 -INF          -41.8635        +INF             .          
+
+---- VAR x  
+
+          LOWER          LEVEL          UPPER         MARGINAL
+
+1           .              .            +INF            4.4975      
+2           .              .            +INF            1.1566      
+3           .              .            +INF            1.8364      
+4           .              .            +INF            3.5998      
+5           .             9.3503        +INF             .          
+6           .              .            +INF            1.3574      
+7           .              .            +INF            1.2883      
+8           .              .            +INF            1.0316      
+9           .              .            +INF            0.8375      
+10          .              .            +INF            2.4231      
+
+---- VAR y  
+
+          LOWER          LEVEL          UPPER         MARGINAL
+
+1           .            11.6213        +INF             .          
+2           .            53.3215        +INF             .          
+3           .            30.4573        +INF             .          
+4           .            19.9814        +INF             .          
+5           .            19.3518        +INF             .          
+6           .            16.2341        +INF             .          
+7           .            17.3242        +INF             .          
+8           .            56.2873        +INF             .          
+9           .              .            +INF            2.8482      
+10          .            27.1339        +INF             .          
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+----     14 PARAMETER c  
+
+1  -1.008,    2  -2.685,    3  -1.035,    4  -1.951,    5  -4.477,    6  -2.441,    7  -4.362,    8  -4.000,    9  -2.324,    10 -3.259
+
+
+----     14 PARAMETER a  
+
+             1           2           3           4           5           6           7           8           9          10
+
+1        1.102       1.384       1.324       1.192       1.112       1.597       1.511       1.045       1.783       1.946
+2        1.596       1.607       1.363       1.594       1.680       1.507       1.159       1.657       1.524       1.124
+3        1.987       1.228       1.676       1.777       1.932       1.201       1.297       1.197       1.246       1.646
+4        1.735       1.085       1.150       1.434       1.187       1.693       1.763       1.155       1.389       1.695
+5        1.846       1.613       1.976       1.027       1.187       1.087       1.540       1.127       1.734       1.113
+6        1.488       1.796       1.492       1.534       1.011       1.544       1.451       1.975       1.184       1.164
+7        1.025       1.178       1.061       1.017       1.836       1.602       1.027       1.196       1.951       1.336
+8        1.594       1.259       1.641       1.155       1.460       1.393       1.805       1.541       1.391       1.558
+9        1.933       1.349       1.008       1.949       1.572       1.334       1.984       1.766       1.110       1.995
+10       1.580       1.166       1.643       1.344       1.912       1.900       1.016       1.369       1.664       1.593
+
+
+----     14 PARAMETER b  
+
+1  22.022,    2  69.029,    3  48.526,    4  31.080,    5  30.455,    6  25.684,    7  34.488,    8  69.939,    9  14.698,    10 45.015
+
+
+----     14 VARIABLE z.L                   =      -41.863  
+
+----     14 VARIABLE x.L  
+
+5 9.350
+
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 7
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE linprogram Using LP From line 14
+
+
+---- objfunc  =E=  
+
+objfunc..  z + 2.119799416*x(1) + 2.473597704*x(2) + 4.54033284*x(3) + 1.115358532*x(4) + 2.173027316*x(5) + 1.054913112*x(6) + 1.580717464*x(7) + 2.51423552*x(8) + 2.194740484*x(9) + 2.196445312*x(10) =E= 0 ;
+     
+      (LHS = -21.5449904696613, INFES = 21.5449904696613 ****)
+     
+
+---- constr  =E=  
+
+constr(1)..  1.994166462*x(1) + 1.809087892*x(2) + 1.30620673*x(3) + 1.087402042*x(4) + 1.430502537*x(5) + 1.349684504*x(6) + 1.117340452*x(7) + 1.585981442*x(8) + 1.445526822*x(9) + 1.412318519*x(10) + y(1) =E= 12.41996265 ;
+     
+      (LHS = 24.9969490047266, INFES = 12.5769863547266 ****)
+     
+constr(2)..  1.914514752*x(1) + 1.213783869*x(2) + 1.224172661*x(3) + 1.542333641*x(4) + 1.631056429*x(5) + 1.327433784*x(6) + 1.148784828*x(7) + 1.92914777*x(8) + 1.251032149*x(9) + 1.062587049*x(10) + y(2) =E= 68.9273846 ;
+     
+      (LHS = 68.5723968195568, INFES = 0.354987780443238 ****)
+     
+constr(3)..  1.31014418*x(1) + 1.040197097*x(2) + 1.82116568*x(3) + 1.230960791*x(4) + 1.410028352*x(5) + 1.302580941*x(6) + 1.444921895*x(7) + 1.716001945*x(8) + 1.593154972*x(9) + 1.131194359*x(10) + y(3) =E= 75.24564704 ;
+     
+      (LHS = 43.6414582685473, INFES = 31.6041887714527 ****)
+     
+REMAINING 7 ENTRIES SKIPPED
+
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 8
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE linprogram Using LP From line 14
+
+
+---- z  
+
+z
+                (.LO, .L, .UP, .M = -INF, -41.8634510621142, +INF, 0)
+        1       objfunc
+
+
+---- x  
+
+x(1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 4.49745366289748)
+        2.1198  objfunc
+        1.9942  constr(1)
+        1.9145  constr(2)
+        1.3101  constr(3)
+        1.1612  constr(4)
+        1.6825  constr(5)
+        1.0847  constr(6)
+        1.7715  constr(7)
+        1.5962  constr(8)
+        1.3363  constr(9)
+        1.2559  constr(10)
+
+x(2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 1.15655356800741)
+        2.4736  objfunc
+        1.8091  constr(1)
+        1.2138  constr(2)
+        1.0402  constr(3)
+        1.3156  constr(4)
+        1.673   constr(5)
+        1.5722  constr(6)
+        1.1401  constr(7)
+        1.8786  constr(8)
+        1.5886  constr(9)
+        1.3249  constr(10)
+
+x(3)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 1.83638510762605)
+        4.5403  objfunc
+        1.3062  constr(1)
+        1.2242  constr(2)
+        1.8212  constr(3)
+        1.5721  constr(4)
+        1.8312  constr(5)
+        1.0221  constr(6)
+        1.2645  constr(7)
+        1.1707  constr(8)
+        1.5744  constr(9)
+        1.2148  constr(10)
+
+REMAINING 7 ENTRIES SKIPPED
+
+---- y  
+
+y(1)
+                (.LO, .L, .UP, .M = 0, 11.6213189740186, +INF, 0)
+        1       constr(1)
+
+y(2)
+                (.LO, .L, .UP, .M = 0, 53.3215274297937, +INF, 0)
+        1       constr(2)
+
+y(3)
+                (.LO, .L, .UP, .M = 0, 30.4572680407456, +INF, 0)
+        1       constr(3)
+
+REMAINING 7 ENTRIES SKIPPED
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 9
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE linprogram Using LP From line 14
+
+
+LOOPS                                    k   2
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           2     SINGLE EQUATIONS           11
+BLOCKS OF VARIABLES           3     SINGLE VARIABLES           21
+NON ZERO ELEMENTS           121
+
+
+GENERATION TIME      =        0.015 SECONDS      3 MB  25.1.2 r67455 WEX-WEI
+
+
+EXECUTION TIME       =        0.031 SECONDS      3 MB  25.1.2 r67455 WEX-WEI
+               L O O P S                  k 2
+
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 10
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE linprogram Using LP From line 14
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   linprogram          OBJECTIVE  z
+     TYPE    LP                  DIRECTION  MINIMIZE
+     SOLVER  CPLEX               FROM LINE  14
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      1 Optimal                   
+**** OBJECTIVE VALUE              -43.1714
+
+ RESOURCE USAGE, LIMIT          0.015      1000.000
+ ITERATION COUNT, LIMIT         2    2000000000
+
+IBM ILOG CPLEX   25.1.2 r67455 Released Aug  1, 2018 WEI x86 64bit/MS Windows 
+Cplex 12.8.0.0
+
+Space for names approximately 0.00 Mb
+Use option 'names no' to turn use of names off
+LP status(1): optimal
+Cplex Time: 0.00sec (det. 0.05 ticks)
+Optimal solution found.
+Objective :         -43.171393
+
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU objfunc             .              .              .             1.0000      
+
+---- EQU constr  
+
+          LOWER          LEVEL          UPPER         MARGINAL
+
+1         12.4200        12.4200        12.4200        -3.4760      
+2         68.9274        68.9274        68.9274         EPS         
+3         75.2456        75.2456        75.2456         EPS         
+4         45.5575        45.5575        45.5575         EPS         
+5         30.9718        30.9718        30.9718         EPS         
+6         44.7636        44.7636        44.7636         EPS         
+7         13.1451        13.1451        13.1451         EPS         
+8         64.1592        64.1592        64.1592         EPS         
+9         47.3079        47.3079        47.3079         EPS         
+10        62.2737        62.2737        62.2737         EPS         
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR z                 -INF          -43.1714        +INF             .          
+
+---- VAR x  
+
+          LOWER          LEVEL          UPPER         MARGINAL
+
+1           .              .            +INF            4.8119      
+2           .              .            +INF            3.8147      
+3           .             9.5084        +INF             .          
+4           .              .            +INF            2.6644      
+5           .              .            +INF            2.7994      
+6           .              .            +INF            3.6365      
+7           .              .            +INF            2.3031      
+8           .              .            +INF            2.9986      
+9           .              .            +INF            2.8299      
+10          .              .            +INF            2.7127      
+
+---- VAR y  
+
+          LOWER          LEVEL          UPPER         MARGINAL
+
+1           .              .            +INF            3.4760      
+2           .            57.2874        +INF             .          
+3           .            57.9292        +INF             .          
+4           .            30.6097        +INF             .          
+5           .            13.5598        +INF             .          
+6           .            35.0455        +INF             .          
+7           .             1.1216        +INF             .          
+8           .            53.0280        +INF             .          
+9           .            32.3379        +INF             .          
+10          .            50.7230        +INF             .          
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 11
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+----     14 PARAMETER c  
+
+1  -2.120,    2  -2.474,    3  -4.540,    4  -1.115,    5  -2.173,    6  -1.055,    7  -1.581,    8  -2.514,    9  -2.195,    10 -2.196
+
+
+----     14 PARAMETER a  
+
+             1           2           3           4           5           6           7           8           9          10
+
+1        1.994       1.809       1.306       1.087       1.431       1.350       1.117       1.586       1.446       1.412
+2        1.915       1.214       1.224       1.542       1.631       1.327       1.149       1.929       1.251       1.063
+3        1.310       1.040       1.821       1.231       1.410       1.303       1.445       1.716       1.593       1.131
+4        1.161       1.316       1.572       1.269       1.036       1.686       1.675       1.332       1.760       1.177
+5        1.682       1.673       1.831       1.515       1.283       1.555       1.414       1.073       1.806       1.333
+6        1.085       1.572       1.022       1.742       1.905       1.561       1.473       1.718       1.513       1.887
+7        1.772       1.140       1.265       1.683       1.450       1.966       1.958       1.899       1.328       1.457
+8        1.596       1.879       1.171       1.634       1.772       1.569       1.028       1.811       1.279       1.433
+9        1.336       1.589       1.574       1.543       1.578       1.977       1.321       1.763       1.963       1.949
+10       1.256       1.325       1.215       1.174       1.731       1.270       1.758       1.617       1.291       1.741
+
+
+----     14 PARAMETER b  
+
+1  12.420,    2  68.927,    3  75.246,    4  45.558,    5  30.972,    6  44.764,    7  13.145,    8  64.159,    9  47.308,    10 62.274
+
+
+----     14 VARIABLE z.L                   =      -43.171  
+
+----     14 VARIABLE x.L  
+
+3 9.508
+
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 12
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE linprogram Using LP From line 14
+
+
+---- objfunc  =E=  
+
+objfunc..  z + 1.266100828*x(1) + 3.122880928*x(2) + 4.145555984*x(3) + 2.956868308*x(4) + 3.537138028*x(5) + 1.258398168*x(6) + 4.727966876*x(7) + 2.984532712*x(8) + 3.430364064*x(9) + 4.180581972*x(10) =E= 0 ;
+     
+      (LHS = -3.7537042904414, INFES = 3.7537042904414 ****)
+     
+
+---- constr  =E=  
+
+constr(1)..  1.849325781*x(1) + 1.634517345*x(2) + 1.986466256*x(3) + 1.757917433*x(4) + 1.507883472*x(5) + 1.767773528*x(6) + 1.832128134*x(7) + 1.583935755*x(8) + 1.575059601*x(9) + 1.556705404*x(10) + y(1) =E= 10.54341133 ;
+     
+      (LHS = 18.8881561688213, INFES = 8.34474483882125 ****)
+     
+constr(2)..  1.60357821*x(1) + 1.97705001*x(2) + 1.554072949*x(3) + 1.935041631*x(4) + 1.413199946*x(5) + 1.8064457*x(6) + 1.000777894*x(7) + 1.455260533*x(8) + 1.419165302*x(9) + 1.015664723*x(10) + y(2) =E= 70.65568012 ;
+     
+      (LHS = 72.064215211173, INFES = 1.40853509117305 ****)
+     
+constr(3)..  1.081979691*x(1) + 1.598813739*x(2) + 1.555175228*x(3) + 1.618004814*x(4) + 1.885090866*x(5) + 1.189865972*x(6) + 1.428062589*x(7) + 1.166508875*x(8) + 1.886264357*x(9) + 1.676541273*x(10) + y(3) =E= 11.05985768 ;
+     
+      (LHS = 72.7164980138756, INFES = 61.6566403338756 ****)
+     
+REMAINING 7 ENTRIES SKIPPED
+
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 13
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE linprogram Using LP From line 14
+
+
+---- z  
+
+z
+                (.LO, .L, .UP, .M = -INF, -43.1713931617612, +INF, 0)
+        1       objfunc
+
+
+---- x  
+
+x(1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 4.8118594614927)
+        1.2661  objfunc
+        1.8493  constr(1)
+        1.6036  constr(2)
+        1.082   constr(3)
+        1.8633  constr(4)
+        1.442   constr(5)
+        1.1038  constr(6)
+        1.3506  constr(7)
+        1.2968  constr(8)
+        1.154   constr(9)
+        1.1011  constr(10)
+
+x(2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 3.81473398029164)
+        3.1229  objfunc
+        1.6345  constr(1)
+        1.9771  constr(2)
+        1.5988  constr(3)
+        1.0928  constr(4)
+        1.6591  constr(5)
+        1.2349  constr(6)
+        1.86    constr(7)
+        1.1155  constr(8)
+        1.0727  constr(9)
+        1.4059  constr(10)
+
+x(3)
+                (.LO, .L, .UP, .M = 0, 9.50842034782656, +INF, 0)
+        4.1456  objfunc
+        1.9865  constr(1)
+        1.5541  constr(2)
+        1.5552  constr(3)
+        1.9965  constr(4)
+        1.4845  constr(5)
+        1.3402  constr(6)
+        1.3405  constr(7)
+        1.3998  constr(8)
+        1.8286  constr(9)
+        1.4791  constr(10)
+
+REMAINING 7 ENTRIES SKIPPED
+
+---- y  
+
+y(1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 3.47596803455453)
+        1       constr(1)
+
+y(2)
+                (.LO, .L, .UP, .M = 0, 57.2874363608946, +INF, 0)
+        1       constr(2)
+
+y(3)
+                (.LO, .L, .UP, .M = 0, 57.9292382315246, +INF, 0)
+        1       constr(3)
+
+REMAINING 7 ENTRIES SKIPPED
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 14
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE linprogram Using LP From line 14
+
+
+LOOPS                                    k   3
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           2     SINGLE EQUATIONS           11
+BLOCKS OF VARIABLES           3     SINGLE VARIABLES           21
+NON ZERO ELEMENTS           121
+
+
+GENERATION TIME      =        0.015 SECONDS      3 MB  25.1.2 r67455 WEX-WEI
+
+
+EXECUTION TIME       =        0.046 SECONDS      3 MB  25.1.2 r67455 WEX-WEI
+               L O O P S                  k 3
+
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 15
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE linprogram Using LP From line 14
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   linprogram          OBJECTIVE  z
+     TYPE    LP                  DIRECTION  MINIMIZE
+     SOLVER  CPLEX               FROM LINE  14
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      1 Optimal                   
+**** OBJECTIVE VALUE              -28.2105
+
+ RESOURCE USAGE, LIMIT          0.016      1000.000
+ ITERATION COUNT, LIMIT         2    2000000000
+
+IBM ILOG CPLEX   25.1.2 r67455 Released Aug  1, 2018 WEI x86 64bit/MS Windows 
+Cplex 12.8.0.0
+
+Space for names approximately 0.00 Mb
+Use option 'names no' to turn use of names off
+LP status(1): optimal
+Cplex Time: 0.00sec (det. 0.04 ticks)
+Optimal solution found.
+Objective :         -28.210546
+
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU objfunc             .              .              .             1.0000      
+
+---- EQU constr  
+
+          LOWER          LEVEL          UPPER         MARGINAL
+
+1         10.5434        10.5434        10.5434        -2.3057      
+2         70.6557        70.6557        70.6557         EPS         
+3         11.0599        11.0599        11.0599        -0.3527      
+4         39.9799        39.9799        39.9799         EPS         
+5         35.1055        35.1055        35.1055         EPS         
+6         59.3410        59.3410        59.3410         EPS         
+7         39.1110        39.1110        39.1110         EPS         
+8         48.4859        48.4859        48.4859         EPS         
+9         34.1526        34.1526        34.1526         EPS         
+10        58.9704        58.9704        58.9704         EPS         
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR z                 -INF          -28.2105        +INF             .          
+
+---- VAR x  
+
+          LOWER          LEVEL          UPPER         MARGINAL
+
+1           .              .            +INF            3.3794      
+2           .              .            +INF            1.2097      
+3           .              .            +INF            0.9831      
+4           .              .            +INF            1.6670      
+5           .              .            +INF            0.6044      
+6           .              .            +INF            3.2372      
+7           .             0.5415        +INF             .          
+8           .              .            +INF            1.0789      
+9           .              .            +INF            0.8665      
+10          .             6.1356        +INF             .          
+
+---- VAR y  
+
+          LOWER          LEVEL          UPPER         MARGINAL
+
+1           .              .            +INF            2.3057      
+2           .            63.8821        +INF             .          
+3           .              .            +INF            0.3527      
+4           .            32.6888        +INF             .          
+5           .            27.1946        +INF             .          
+6           .            51.7404        +INF             .          
+7           .            30.3136        +INF             .          
+8           .            41.5676        +INF             .          
+9           .            25.8536        +INF             .          
+10          .            46.2566        +INF             .          
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 16:38:02 Page 16
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+----     14 PARAMETER c  
+
+1  -1.266,    2  -3.123,    3  -4.146,    4  -2.957,    5  -3.537,    6  -1.258,    7  -4.728,    8  -2.985,    9  -3.430,    10 -4.181
+
+
+----     14 PARAMETER a  
+
+             1           2           3           4           5           6           7           8           9          10
+
+1        1.849       1.635       1.986       1.758       1.508       1.768       1.832       1.584       1.575       1.557
+2        1.604       1.977       1.554       1.935       1.413       1.806       1.001       1.455       1.419       1.016
+3        1.082       1.599       1.555       1.618       1.885       1.190       1.428       1.167       1.886       1.677
+4        1.863       1.093       1.996       1.617       1.001       1.609       1.174       1.311       1.729       1.085
+5        1.442       1.659       1.484       1.318       1.914       1.184       1.872       1.456       1.459       1.124
+6        1.104       1.235       1.340       1.873       1.845       1.823       1.481       1.914       1.929       1.108
+7        1.351       1.860       1.341       1.213       1.926       1.361       1.876       1.148       1.456       1.268
+8        1.297       1.115       1.400       1.912       1.252       1.103       1.146       1.386       1.046       1.026
+9        1.154       1.073       1.829       1.400       1.417       1.972       1.243       1.362       1.630       1.243
+10       1.101       1.406       1.479       1.145       1.510       1.885       1.055       1.507       1.764       1.979
+
+
+----     14 PARAMETER b  
+
+1  10.543,    2  70.656,    3  11.060,    4  39.980,    5  35.105,    6  59.341,    7  39.111,    8  48.486,    9  34.153,    10 58.970
+
+
+----     14 VARIABLE z.L                   =      -28.211  
+
+----     14 VARIABLE x.L  
+
+7  0.542,    10 6.136
+
+
+**** REPORT FILE SUMMARY
+
+out P:\student\9omp\Teng\out.txt
+
+
+EXECUTION TIME       =        0.015 SECONDS      3 MB  25.1.2 r67455 WEX-WEI
+
+
+USER: GAMS Development Corporation, USA              G871201/0000CA-ANY
+      Free Demo, +1 202-342-0180, support@gams.com, www.gams.com DC0000
+
+
+**** FILE SUMMARY
+
+Input      P:\student\9omp\Teng\linprogram4.gms
+Output     P:\student\9omp\Teng\linprogram4.lst

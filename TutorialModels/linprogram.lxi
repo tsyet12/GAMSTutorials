@@ -1,0 +1,13 @@
+B 2 C o m p i l a t i o n
+B 35 Equation Listing    SOLVE linprogram Using LP From line 20
+D 36 objfunc
+D 42 constr
+B 51 Column Listing      SOLVE linprogram Using LP From line 20
+E 52 z
+E 60 x
+B 82 Model Statistics    SOLVE linprogram Using LP From line 20
+B 98 Solution Report     SOLVE linprogram Using LP From line 20
+F 127 objfunc
+F 133 constr
+G 135 z
+G 139 x
