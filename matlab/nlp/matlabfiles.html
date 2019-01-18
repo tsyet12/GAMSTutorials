@@ -1,0 +1,199 @@
+<html>
+<head>
+<title>Selected Matlab Functions</title>
+<META NAME="AUTHOR" CONTENT="Sklenar Jaroslav">
+</head>
+
+<body>
+<h1 align="center">Selected Matlab Functions</h1>
+
+<P ALIGN="JUSTIFY">
+This page contains the list of selected Matlab functions that are available in the
+computer laboratories of the Department of Statistics and Operations Research.
+The files not included in this list are various example functions, examples
+presented during lectures and other files not intended for general use. In both labs the Matlab related files are stored in the folder <b>Q:\Matlab</b>.&nbsp;Note
+that the drive Q is accessible for reading only. All functions follow the Matlab
+convention of the description by comments included immediately after the heading.
+So use the Matlab command <b>&gt;&gt;help f </b>to display the description of
+the function f. Use <b>&gt;&gt;type f</b> to view the code. The description
+gives an example of the use of the function that you can copy and paste to the
+command line. Note that the purpose of all functions is a clear demonstration of
+the implementation of theoretical concepts in Matlab and user friendliness, not
+the speed of computation. These are the functions listed by categories:
+</P>
+
+<h2 align="left"> Visualization</h2>
+
+<P ALIGN="JUSTIFY">
+<b>contourshow </b> displays contours of a scalar function of 2 scalar arguments.</P>
+
+<P ALIGN="JUSTIFY">
+<b>contourshowv </b> displays contours of a scalar function of one 2-vector argument.</P>
+
+<P ALIGN="JUSTIFY">
+<b>fshow</b> displays the graph of a univariate scalar function.</P>
+
+<P ALIGN="JUSTIFY">
+<b>fshowstyle</b> displays the graph of a univariate scalar function with the
+possibility to control the line properties.</P>
+
+<P ALIGN="JUSTIFY">
+<b>fshow3D</b> displays a 3D mesh of a scalar function of 2 scalar arguments.</P>
+
+<P ALIGN="JUSTIFY">
+<b>fshow3Dv</b> displays a 3D mesh of a scalar function of one 2-vector argument.</P>
+
+<P ALIGN="JUSTIFY">
+<b>symshow</b> shows the graph of a univariate scalar symbolic function with argument x.</P>
+
+<P ALIGN="JUSTIFY">
+<b>symshow3D</b> shows the mesh of a 2-dimensional scalar symbolic
+function with arguments x and y.</P>
+
+<h2 align="left">Line Search Algorithms</h2>
+
+<P ALIGN="JUSTIFY">
+<b>
+bisection</b> finds a root of a univariate scalar function by using the
+bisection search
+algorithm.</P>
+
+<P ALIGN="JUSTIFY"><b>dichotomous</b> finds a minimum of a univariate scalar function by using the
+dichotomous search algorithm.</P>
+
+<P ALIGN="JUSTIFY">
+<b>golden</b> finds a root of a univariate scalar function by using the golden section
+search algorithm.</P>
+
+<P ALIGN="JUSTIFY">
+Note: for the Newton method use its multivariate version listed in the next section
+(see help).</P>
+
+<h2 align="left">Multivariate Unconstrained Optimization Algorithms</h2>
+
+<P ALIGN="JUSTIFY">
+<b>
+cyclic</b> finds a minimum of a multivariate scalar function by using the cyclic co-ordinate algorithm.</P>
+
+<P ALIGN="JUSTIFY">
+<b>cyclic_show</b> finds a minimum of a bivariate scalar function by using the cyclic co-ordinate algorithm. 
+Search steps are shown on function contours.</P>
+
+<P ALIGN="JUSTIFY">
+<b>DFPsearch</b> finds a minimum of a multivariate scalar function by using the
+Davidon-Fletcher-Powell quasi-Newton algorithm.</P>
+
+<P ALIGN="JUSTIFY">
+<b>DFPsearch_show</b> finds a minimum of a bivariate scalar function by using the
+Davidon-Fletcher-Powell quasi-Newton algorithm. Search steps are shown on function contours.</P>
+
+<P ALIGN="JUSTIFY">
+<b>flambda</b> is a &quot;cross section&quot; univariate
+function that is generated from a multivariate function for given starting point
+and given direction.</P>
+
+<P ALIGN="JUSTIFY">
+<b>fletcherreeves</b> finds a minimum of a multivariate scalar function by using the Fletcher-Reeves
+conjugate gradient algorithm.</P>
+
+<P ALIGN="JUSTIFY">
+<b>fletcherreeves_show</b> finds a minimum of a bivariate scalar function by using the Fletcher-Reeves 
+conjugate gradient algorithm. Search steps are shown on function contours.</P>
+
+<P ALIGN="JUSTIFY">
+<b>grad_ient</b> finds a minimum of a multivariate scalar function by using the 
+gradient = steepest descent algorithm.</P>
+
+<P ALIGN="JUSTIFY">
+<b>gradient_show</b> finds a minimum of a bivariate scalar function by using the gradient (steepest descent) 
+algorithm. Search steps are shown on function contours.</P>
+
+<P ALIGN="JUSTIFY">
+<b>hookejeeves</b> finds a minimum of a multivariate scalar function by using
+the Hooke-Jeeves algorithm.</P>
+
+<P ALIGN="JUSTIFY">
+<b>hookejeeves_show</b> finds a minimum of a bivariate scalar function by using the
+Hooke-Jeeves algorithm. Search steps are shown on function contours.</P>
+
+<P ALIGN="JUSTIFY">
+<b>neldermead</b> finds a minimum of a multivariate scalar function by using the Nelder
+- Mead (moving simplex) algorithm.</P>
+
+<P ALIGN="JUSTIFY">
+<b>neldermead_show</b> finds a minimum of a bivariate scalar function by using the Nelder
+- Mead (moving simplex) algorithm. Search steps are shown on function contours.</P>
+
+<P ALIGN="JUSTIFY">
+<b>newton</b> finds a minimum of a multivariate scalar function by using the Newton's method.
+Hessian is supposed to be non-singular.</P>
+
+<P ALIGN="JUSTIFY">
+<b>newton_show</b> finds a minimum of a bivariate scalar function by using the Newton's method.
+Hessian is supposed to be non-singular. Search steps are shown on function contours.</P>
+
+<h2 align="left"> Queueing Theory </h2>
+
+<P ALIGN="JUSTIFY">
+<b>erlang</b> computes the loss probability of the M/M/c/c system. Fast version
+- does not use poisspdf of Matlab.</P>
+
+<P ALIGN="JUSTIFY">
+<b>jacksonnet</b> solves a stable open Jackson network made of single channel
+stations.</P>
+
+<P ALIGN="JUSTIFY">
+<b>jacksonnetc</b> solves a stable open Jackson network made of multichannel
+stations.</P>
+
+<P ALIGN="JUSTIFY">
+<b>jacksonnetcls</b> solves a stable open Jackson network made of multichannel
+stations and classes of customers.</P>
+
+<h2 align="left"> Linear Programming </h2>
+
+<P ALIGN="JUSTIFY">
+<b>pivot</b> pivoting a matrix at given row and column. For zero pivot item no operation,
+otherwise no other tests.</P>
+
+<P ALIGN="JUSTIFY">
+<b>simplex</b> is a script that solves the LP problem Max z = c'x, ST Ax &lt;= b, x &gt;= 0.</P>
+
+<P ALIGN="JUSTIFY">
+<b>simplex1</b> is a script that solves the LP problem: Max z = c'x, ST Ax &lt;= b,
+x &gt;= 0 by matrix (no table) approach. Shows all partial results with comments.</P>
+
+<P ALIGN="JUSTIFY">
+<b>simplex2</b> is a script that solves the LP problem: Max z = c'x, ST Ax &lt;= b,
+x &gt;= 0 by matrix (no table) approach. Fast version, shows just the final results.</P>
+
+<h2 align="left"> Various </h2>
+
+<P ALIGN="JUSTIFY">
+<b>fibonacci1</b> returns a Fibonacci number. Direct nonrecursive
+implementation.</P>
+
+<P ALIGN="JUSTIFY">
+<b>fibonacci2</b> returns a Fibonacci number. Implementation by recursion.</P>
+
+<P ALIGN="JUSTIFY">
+<b>fib1</b> measures time spent by <b>fibonacci1</b>.</P>
+
+<P ALIGN="JUSTIFY">
+<b>fib2</b> measures time spent by <b>fibonacci2</b>. Note the difference, try for N &gt; 30.</P>
+
+<P ALIGN="JUSTIFY">
+&nbsp;</P>
+
+<HR>
+
+<!-- Footer Navigation -->
+<CENTER><FONT FACE="Verdana, Arial" SIZE=2><B>
+
+  [ <A HREF="http://staff.um.edu.mt/jskl1/">Home</A> |
+    <A HREF="http://www.um.edu.mt/">University of Malta</A> |
+    <A HREF="http://www.stator.um.edu.mt/">Department of Statistics &amp; OR</A> ]
+    </B></FONT></CENTER>
+
+</body>
+</html>

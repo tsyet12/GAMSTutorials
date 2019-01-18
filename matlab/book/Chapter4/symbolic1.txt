@@ -1,0 +1,112 @@
+x = sym('x')   % defining x as a symbolic object
+ 
+x =
+ 
+x
+ 
+syms y f g1 g2 g	% definition of multiple objects
+whos			% types of variables in the workspace
+  Name      Size         Bytes  Class
+
+  f         1x1            126  sym object
+  g         1x1            126  sym object
+  g1        1x1            128  sym object
+  g2        1x1            128  sym object
+  x         1x1            126  sym object
+  y         1x1            126  sym object
+
+Grand total is 14 elements using 760 bytes
+
+f= 12 + (x-1)*(x-1)*(x-2)*(x-3)  % constructing f
+ 
+f =
+ 
+12+(x-1)^2*(x-2)*(x-3)
+ 
+diff(f)	% first derivative 
+ 
+ans =
+ 
+2*(x-1)*(x-2)*(x-3)+(x-1)^2*(x-3)+(x-1)^2*(x-2)
+ 
+% note the chain rule for derivatives
+% note the idependent variable is assumed to be x
+diff(f,x,2)    % the second derivative
+ 
+ans =
+ 
+2*(x-2)*(x-3)+4*(x-1)*(x-3)+4*(x-1)*(x-2)+2*(x-1)^2
+ 
+diff(f,x,3)    % the third derivative
+ 
+ans =
+ 
+24*x-42
+ 
+g1= 20*x +15*y -30   % define g1
+ 
+g1 =
+ 
+20*x+15*y-30
+ 
+g2 = 0.25*x + y -1;  % define g2
+
+% g1,g2 can only have partial derivatives
+% independent variables have to be identifies
+diff(g1,x)
+ 
+ans =
+ 
+20
+ 
+diff(g1,y)
+ 
+ans =
+ 
+15
+ 
+g = [g1;g2]  % g column vector based on g1,g2
+ 
+g =
+ 
+[ 20*x+15*y-30]
+[    1/4*x+y-1]
+ 
+% g can be the constraint vector in optimization problems
+% the partial derivatives of g with respect to design variables
+% is called the Jacobian matrix
+% the properties of this matrix is important for numerical techniques
+
+xy = [x y];	% row vector of variables
+J = jacobian(g,xy)  % calculating the Jacobian
+ 
+J =
+ 
+[  20,  15]
+[ 1/4,   1]
+ 
+ezplot(f)  % a plot of f for -2 pi < x < 2 pi
+
+ezplot(f,[0,4])  % plot between 0 <= x <= 4
+df = diff(f);
+hold on
+ezplot(df,[0,4])  % plotting function and derivative
+% combine with MATLAB graphics - draw a line
+
+line([0 4],[0 0],'Color','r') 
+g
+ 
+g =
+ 
+[ 20*x+15*y-30]
+[    1/4*x+y-1]
+ 
+% to evaluate g at x = 1, y = 2.5
+
+
+subs(g,{x,y},{1,2.5})
+
+ans =
+
+   27.5000
+    1.7500
